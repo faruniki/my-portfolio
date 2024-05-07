@@ -188,7 +188,7 @@ export default function Home() {
           <p className="contact-title">Let's talk with me if you interested:</p>
         </center>
         <center>
-          <p className="contact-info">nazibakbar@gmail.com</p>
+          <p className="contact-info">najibfahrunaakbar@gmail.com</p>
           <p className="contact-info">0895-3799-67344</p>
         </center>
         <center className="socmed">
