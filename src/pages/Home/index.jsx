@@ -1,4 +1,4 @@
-import React,  { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -12,21 +12,54 @@ import Sivina from "../../documents/projects/sivina.jpg";
 import Bapangnas from "../../documents/projects/bapangnas.jpg";
 
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const aboutRef = useRef(null);
   const projectsRef = useRef(null);
   const contactRef = useRef(null);
 
-  const scrollToRef = (ref) => {
+const scrollToRef = (ref) => {
+  if (ref && ref.current) {
     ref.current.scrollIntoView({ behavior: "smooth" });
+  } else {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+  setMenuOpen(false);
+};
+
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
   };
+
+  let lastScrollTop = 0;
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      let currentScroll =
+        window.pageYOffset || document.documentElement.scrollTop;
+
+      if (currentScroll > lastScrollTop) {
+        document.querySelector(".navbar").style.top = "-7vh"; 
+      } else {
+        document.querySelector(".navbar").style.top = "0"; 
+      }
+
+      lastScrollTop = currentScroll; 
+    },
+    false
+  );
 
   return (
     <div>
-<div className="navbar">
+      <nav className="navbar">
         <div className="navbar-left">
           <p onClick={() => scrollToRef(null)}>Nazib Akbar</p>
         </div>
-        <div className="navbar-right">
+        <div className="navbar-toggle" onClick={toggleMenu}>
+          ☰
+        </div>
+        <div className={`navbar-right ${menuOpen ? "open" : ""}`}>
           <ul>
             <li onClick={() => scrollToRef(null)}>Home</li>
             <li onClick={() => scrollToRef(aboutRef)}>About</li>
@@ -34,7 +67,7 @@ export default function Home() {
             <li onClick={() => scrollToRef(contactRef)}>Contact</li>
           </ul>
         </div>
-      </div>
+      </nav>
       <div className="home">
         <div className="home-left">
           <p className="title">Junior Web Developer & UI/UX Designer💫</p>
@@ -174,7 +207,7 @@ export default function Home() {
               </p>
             </div>
             <div className="faq-3">
-              <p className="faq-3-title">For product teams</p>
+              <p className="faq-3-title">For products</p>
               <p className="faq-3-desc">
                 I design growth experiments and help your team look at the
                 challenges differently to build a better product.
