@@ -226,6 +226,7 @@ body {
 .projects-container {
   width: 60%;
   margin-left: 20%;
+  margin-right: 20%;
   margin-top: 12%;
   margin-bottom: 6%;
 }
@@ -273,7 +274,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
 }
 
 .project-card:hover .project-overlay {
@@ -337,6 +337,18 @@ body {
 
 
 @media (max-width: 768px) {
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    gap: 20px;
+  }
+  
+  .project-card {
+    max-width: 100%; 
+    box-sizing: border-box; 
+  }
+
   .projects-cont {
     flex-direction: column;
     margin-top: 40px;
@@ -348,15 +360,17 @@ body {
   }
 
   .projects-title-2 {
-    margin-top: 10px;
-    text-align: center;
+    top: 20px;
     font-size: 14px;
   }
 
   .projects-desc {
-    margin-top: 10px; 
-    text-align: center;
+    top: 60px;
     font-size: 10px;
+  }
+
+  .project-card {
+    width: 100%;
   }
 }
 
@@ -532,7 +546,7 @@ body {
   }
 
   .contact center .contact-title {
-    font-size: 20px;
+    font-size: 16px;
     margin: 10px 0px;
   }
 
@@ -545,9 +559,13 @@ body {
   }
 
   .about-title,
-  .projects-title,
-  .faq-title {
+  .projects-title {
     font-size: 20px;
+  }
+
+  .faq-title {
+    font-size: 24px;
+    text-align: center;
   }
 
   .about-description,
@@ -565,11 +583,17 @@ body {
   }
 
   .about-container,
-  .projects-container,
   .faq-container {
     width: 80%; 
     margin: 0 auto; 
     margin-top: 60px;
+  }
+
+  .projects-container {
+    width: 80%; 
+    margin: 0 auto; 
+    margin-top: 60px;
+    margin-bottom: 60px;
   }
 
   .navbar-left,
