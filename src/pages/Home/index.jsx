@@ -17,15 +17,14 @@ export default function Home() {
   const projectsRef = useRef(null);
   const contactRef = useRef(null);
 
-const scrollToRef = (ref) => {
-  if (ref && ref.current) {
-    ref.current.scrollIntoView({ behavior: "smooth" });
-  } else {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-  setMenuOpen(false);
-};
-
+  const scrollToRef = (ref) => {
+    if (ref && ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    setMenuOpen(false);
+  };
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -40,12 +39,12 @@ const scrollToRef = (ref) => {
         window.pageYOffset || document.documentElement.scrollTop;
 
       if (currentScroll > lastScrollTop) {
-        document.querySelector(".navbar").style.top = "-7vh"; 
+        document.querySelector(".navbar").style.top = "-7vh";
       } else {
-        document.querySelector(".navbar").style.top = "0"; 
+        document.querySelector(".navbar").style.top = "0";
       }
 
-      lastScrollTop = currentScroll; 
+      lastScrollTop = currentScroll;
     },
     false
   );
@@ -107,86 +106,67 @@ const scrollToRef = (ref) => {
         <p className="about-description">Tschuss! 👋</p>
       </div>
       <div ref={projectsRef} className="projects-container">
-        <p className="projects-title">Projects that i've done!</p>
-        {/* <center>
-        <div className="line"></div>
-        </center> */}
-        <div className="projects-cont">
-          <div className="projects-left">
-            <img src={Projects1} alt="" className="project-image" />
+        <p className="projects-title">Projects that I've done!</p>
+        <div className="projects-grid">
+          <div className="project-card">
+            <img src={Projects1} alt="Project 1" className="project-image" />
+            <div className="project-overlay">
+              <p className="projects-title-2">
+                Asosiasi Guru Marketing Indonesia
+              </p>
+              <p className="projects-desc">
+                Agmari is an organization in the field of education aimed at
+                promoting progress and professionalism for Marketing teachers.
+              </p>
+              <a
+                href="https://www.agmari.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <p className="project-button">Visit</p>
+              </a>
+            </div>
           </div>
-          <div className="projects-right">
-            <p className="projects-title-2">
-              Asosiasi Guru Marketing Indonesia
-            </p>
-            <p className="projects-desc">
-              Agmari is an organization in the field of education aimed at
-              promoting progress and professionalism for Marketing teachers in
-              the field of Marketing. This organization is formed to facilitate
-              Marketing and Entrepreneurship teachers in vocational schools
-              (SMK) as well as other teachers interested in learning about
-              Marketing by providing information, training, and activities in
-              the field of Marketing.
-            </p>
-            <a href="https://www.agmari.org" target="_blank">
-              <p className="project-button">Visit</p>
-            </a>
+          <div className="project-card">
+            <img src={Pesantren} alt="Project 2" className="project-image" />
+            <div className="project-overlay">
+              <p className="projects-title-2">
+                Tabungan Siswa Pesantren Quran Pamijahan
+              </p>
+              <p className="projects-desc">
+                Tabungan Siswa Pesantren Quran Pamijahan is a student savings
+                program tailored for students of the Pamijahan Quranic Boarding
+                School.
+              </p>
+              <p className="project-button-invalid">Visit</p>
+            </div>
           </div>
-        </div>
-        <div className="projects-cont">
-          <div className="projects-left">
-            <img src={Pesantren} alt="" className="project-image" />
+          <div className="project-card">
+            <img src={Sivina} alt="Project 3" className="project-image" />
+            <div className="project-overlay">
+              <p className="projects-title-2">Sivina Retail</p>
+              <p className="projects-desc">
+                Sivina is a retail audit and observation survey app that helps
+                businesses collect real-time data on product availability.
+              </p>
+              <p className="project-button-invalid">Visit</p>
+            </div>
           </div>
-          <div className="projects-right">
-            <p className="projects-title-2">
-              Tabungan Siswa Pesantren Quran Pamijahan
-            </p>
-            <p className="projects-desc">
-              Tabungan Siswa Pesantren Quran Pamijahan is a student savings
-              program specifically tailored for students of the Pamijahan
-              Quranic Boarding School. It aims to instill financial literacy and
-              responsibility among students by encouraging regular savings
-              habits. The program may offer incentives or benefits to students
-              who actively participate, fostering a culture of financial
-              discipline and empowerment within the school community.
-            </p>
-            <p className="project-button-invalid">Visit</p>
-          </div>
-        </div>
-        <div className="projects-cont">
-          <div className="projects-left">
-            <img src={Sivina} alt="" className="project-image" />
-          </div>
-          <div className="projects-right">
-            <p className="projects-title-2">Sivina Retail</p>
-            <p className="projects-desc">
-              Sivina is a retail audit and observation survey app. It helps
-              businesses collect real-time data on product availability,
-              pricing, and competitor analysis. With customizable surveys and
-              instant insights, it optimizes retail operations and
-              decision-making.
-            </p>
-            <p className="project-button-invalid">Visit</p>
-          </div>
-        </div>
-        <div className="projects-cont">
-          <div className="projects-left">
-            <img src={Bapangnas} alt="" className="project-image" />
-          </div>
-          <div className="projects-right">
-            <p className="projects-title-2">Badan Pangan Nasional</p>
-            <p className="projects-desc">
-              Badan Pangan Nasional (Bapangnas) is Indonesia's National Food
-              Authority. It oversees food warehousing, ensuring food security by
-              managing storage facilities and distribution networks. Bapangnas
-              plays a critical role in safeguarding the nation's food supply
-              chain and regulating food storage to prevent shortages and ensure
-              accessibility for all Indonesians.
-            </p>
-            <p className="project-button-invalid">Visit</p>
+          <div className="project-card">
+            <img src={Bapangnas} alt="Project 4" className="project-image" />
+            <div className="project-overlay">
+              <p className="projects-title-2">Badan Pangan Nasional</p>
+              <p className="projects-desc">
+                Badan Pangan Nasional (Bapangnas) is Indonesia's National Food
+                Authority that oversees food warehousing and manages storage
+                facilities.
+              </p>
+              <p className="project-button-invalid">Visit</p>
+            </div>
           </div>
         </div>
       </div>
+
       <div className="faq">
         <div className="faq-container">
           <p className="faq-title">What i can do for you?</p>
