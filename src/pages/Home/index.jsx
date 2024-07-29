@@ -10,6 +10,7 @@ import Projects1 from "../../documents/projects/project-1.jpg";
 import Pesantren from "../../documents/projects/pesantren.jpg";
 import Sivina from "../../documents/projects/sivina.jpg";
 import Bapangnas from "../../documents/projects/bapangnas.jpg";
+import Triage from "../../documents/projects/triage.png";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -96,12 +97,12 @@ export default function Home() {
       <div ref={aboutRef} className="about-container">
         <p className="about-title">About me 🫠</p>
         <p className="about-description">
-          Hey there! I'm Nazib, your friendly neighborhood React wizard! 🧙‍♂️ When
-          I'm not designing sleek interfaces or coding up a storm, you can find
-          me lost in the world of frontend development. I've got a serious
-          passion for crafting pixel-perfect designs and bringing them to life
-          with some magical code. Let's make the web a more beautiful and
-          functional place, one component at a time! 🚀✨
+          Hey there! I'm Nazib, your friendly neighborhood full-stack wizard! 🧙‍♂️
+          When I'm not designing sleek interfaces or coding up a storm, you can
+          find me lost in the world of full-stack development. I've got a
+          serious passion for crafting pixel-perfect designs or system and
+          bringing them to life with some magical code. Let's make the web a
+          more beautiful and functional place, one component at a time! 🚀✨
         </p>
         <p className="about-description">Tschuss! 👋</p>
       </div>
@@ -164,6 +165,25 @@ export default function Home() {
               <p className="project-button-invalid">Visit</p>
             </div>
           </div>
+          <div className="project-card">
+            <img src={Triage} alt="Project 4" className="project-image" />
+            <div className="project-overlay">
+              <p className="projects-title-2">Gane Care Triage (ITB)</p>
+              <p className="projects-desc">
+                Gane Care Triage is a counseling guidance service provided by
+                the Bandung Institute of Technology. It offers top-quality
+                counseling services to support individuals in managing their
+                mental health and well-being.
+              </p>
+              <a
+                href="https://ganecaretriage.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <p className="project-button">Visit</p>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -202,7 +222,7 @@ export default function Home() {
         </center>
         <center>
           <p className="contact-info">najibfahrunaakbar@gmail.com</p>
-          <p className="contact-info">0895-3799-67344</p>
+          <p className="contact-info">+62 82 125895 244</p>
         </center>
         <center className="socmed">
           <a href="https://www.linkedin.com/in/rabkabizan/" target="_blank">
