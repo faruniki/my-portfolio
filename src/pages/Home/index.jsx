@@ -21,11 +21,12 @@ import Projects1 from "../../documents/projects/project-1.jpg";
 import Pesantren from "../../documents/projects/pesantren.jpg";
 import Sivina from "../../documents/projects/sivina.jpg";
 import Bapangnas from "../../documents/projects/bapangnas.jpg";
-import Jatiluwih from "../../documents/images/jatiluwih.jpg";
-import SouthJakarta from "../../documents/images/south-jakarta.jpg";
-import Bali from "../../documents/images/bali.jpg";
-import NusaTenggara from "../../documents/images/nusa-tenggara.jpg";
-import CentralJava from "../../documents/images/central-java.jpg";
+
+// import Jatiluwih from "../../documents/images/jatiluwih.jpg";
+// import SouthJakarta from "../../documents/images/south-jakarta.jpg";
+// import Bali from "../../documents/images/bali.jpg";
+// import NusaTenggara from "../../documents/images/nusa-tenggara.jpg";
+// import CentralJava from "../../documents/images/central-java.jpg";
 
 import Triage from "../../documents/projects/triage.png";
 import LogoLoop from "../../components/ReactBits/LogoLoop";
@@ -39,9 +40,11 @@ import ScrollVelocity from "../../components/ReactBits/ScrollVelocity";
 import TiltedCard from "../../components/ReactBits/TiltedCard";
 import ProfileCard from "../../components/ReactBits/ProfileCard";
 import CircularGallery from "../../components/ReactBits/CircularGallery";
-import Particles from "../../components/ReactBits/Particles";
 import ScrollReveal from "../../components/ReactBits/ScrollReveal";
 import BlobCursor from "../../components/ReactBits/BlobCursor";
+import SpotlightCard from "../../components/ReactBits/SpotlightCard";
+import Particles from "../../components/ReactBits/Particles";
+import CustomCursor from "../../components/ReactBits/CustomCursor";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -118,44 +121,44 @@ export default function Home() {
     },
   ];
 
-  const galleryItems = [
-    {
-      image: Jatiluwih,
-      text: "Jatiluwih",
-    },
-    {
-      image: Bali,
-      text: "Bali",
-    },
-    {
-      image: SouthJakarta,
-      text: "South Jakarta",
-    },
-    {
-      image: NusaTenggara,
-      text: "Nusa Tenggara",
-    },
-    {
-      image: CentralJava,
-      text: "Central Java",
-    },
-  ];
+  // const galleryItems = [
+  //   {
+  //     image: Jatiluwih,
+  //     text: "Jatiluwih",
+  //   },
+  //   {
+  //     image: Bali,
+  //     text: "Bali",
+  //   },
+  //   {
+  //     image: SouthJakarta,
+  //     text: "South Jakarta",
+  //   },
+  //   {
+  //     image: NusaTenggara,
+  //     text: "Nusa Tenggara",
+  //   },
+  //   {
+  //     image: CentralJava,
+  //     text: "Central Java",
+  //   },
+  // ];
 
   return (
-    <div className="font-montserrat">
+    <div className="font-montserrat relative w-full">
       <nav
         className={`fixed top-0 left-0 right-0 z-50 flex w-full items-center justify-between bg-white/80 px-6 py-4 shadow-sm backdrop-blur-sm transition-transform duration-300 ${
           navVisible ? "translate-y-0" : "-translate-y-full"
         }`}
       >
         <div
-          className="cursor-pointer text-lg font-bold"
+          className="text-lg font-bold"
           onClick={() => scrollToRef(null)}
         >
           <p>Nazib Akbar</p>
         </div>
         <div
-          className="cursor-pointer text-2xl md:hidden"
+          className="text-2xl md:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           ☰
@@ -167,25 +170,25 @@ export default function Home() {
         >
           <ul className="flex flex-col items-center gap-y-6 md:flex-row md:gap-x-8">
             <li
-              className="relative cursor-pointer list-none text-sm font-semibold after:absolute after:bottom-[-5px] after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
+              className="relative list-none text-sm font-semibold after:absolute after:bottom-[-5px] after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
               onClick={() => scrollToRef(null)}
             >
               Home
             </li>
             <li
-              className="relative cursor-pointer list-none text-sm font-semibold after:absolute after:bottom-[-5px] after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
+              className="relative list-none text-sm font-semibold after:absolute after:bottom-[-5px] after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
               onClick={() => scrollToRef(aboutRef)}
             >
               About
             </li>
             <li
-              className="relative cursor-pointer list-none text-sm font-semibold after:absolute after:bottom-[-5px] after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
+              className="relative list-none text-sm font-semibold after:absolute after:bottom-[-5px] after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
               onClick={() => scrollToRef(projectsRef)}
             >
               Projects
             </li>
             <li
-              className="relative cursor-pointer list-none text-sm font-semibold after:absolute after:bottom-[-5px] after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
+              className="relative list-none text-sm font-semibold after:absolute after:bottom-[-5px] after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
               onClick={() => scrollToRef(contactRef)}
             >
               Contact
@@ -194,39 +197,31 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* <div style={{ width: "100%", height: "600px", position: "relative" }}>
+      <CustomCursor />
+
+      <div
+        style={{
+          position: "absolute",
+          top: -500,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: -1,
+        }}
+      >
         <Particles
-          particleColors={["#ffffff", "#ffffff"]}
-          particleCount={200}
-          particleSpread={10}
-          speed={0.1}
+          particleColors={["#e3e3e3ff"]}
+          particleCount={100}
+          particleSpread={2}
+          speed={0.3}
           particleBaseSize={100}
           moveParticlesOnHover={true}
           alphaParticles={false}
           disableRotation={false}
         />
-      </div> */}
+      </div>
 
-      <main className="pt-24">
-        {/* <BlobCursor
-          blobType="circle"
-          fillColor="#5227FF"
-          trailCount={3}
-          sizes={[60, 125, 75]}
-          innerSizes={[20, 35, 25]}
-          innerColor="rgba(255,255,255,0.8)"
-          opacities={[0.6, 0.6, 0.6]}
-          shadowColor="rgba(0,0,0,0.75)"
-          shadowBlur={5}
-          shadowOffsetX={10}
-          shadowOffsetY={10}
-          filterStdDeviation={30}
-          useFilter={true}
-          fastDuration={0.1}
-          slowDuration={0.5}
-          zIndex={100}
-        /> */}
-
+      <main className="pt-24 z-1">
         <section className="mx-auto flex flex-col-reverse items-center gap-y-8 px-6 md:mt-40 md:w-4/5 md:flex-row md:justify-between lg:w-3/5">
           <div className="w-full text-center md:w-3/5 md:text-left">
             <BlurText
@@ -237,7 +232,7 @@ export default function Home() {
               onAnimationComplete={handleAnimationComplete}
               className="text-3xl font-bold lg:text-5xl pb-2"
             />
-            <div className="mt-4">
+            <div className="mt-4 h-[80px]">
               <DecryptedText
                 text="Hello, I'm Nazib Akbar. A guy who interested in Web Development
               and UI/UX Design. I'm currently live in Bogor, Indonesia. 🌍"
@@ -246,6 +241,7 @@ export default function Home() {
                 revealDirection="left"
                 sequential="true"
                 useOriginalCharsOnly="true"
+                className="text-xl"
               />
             </div>
             <div className="mt-5 flex items-center justify-center gap-x-4 md:justify-start">
@@ -304,29 +300,19 @@ export default function Home() {
         </section>
 
         <section className="py-40">
-          {/* <ScrollVelocity
+          <ScrollVelocity
             texts={[
-              "React",
-              "Tailwind JavaScript Express",
+              "React Tailwind JavaScript Express",
               "Python FastAPI MongoDB",
             ]}
             velocity={50}
-            className="custom-scroll-text "
-          /> */}
-          {/* <div style={{ height: "600px", position: "relative" }}>
-            <CircularGallery
-              bend={0}
-              textColor="#1f1f1fff"
-              borderRadius={0.05}
-              scrollEase={0.02}
-              items={galleryItems}
-            />
-          </div> */}
+            className="custom-scroll-text py-2 text-gray-200"
+          />
         </section>
 
         <section
           ref={aboutRef}
-          className="mx-auto mt-40 w-4/5 text-center lg:w-3/5"
+          className="mx-auto mt-30 w-4/5 text-center lg:w-3/5"
         >
           <h2 className="mb-10 text-center text-2xl font-bold">
             <ScrollFloat
@@ -340,14 +326,14 @@ export default function Home() {
               About me 🫠
             </ScrollFloat>
           </h2>
-          <p className="mt-5">
+          <p className="mt-5 text-2xl font-bold">
             <ScrollFloat
               animationDuration={2.5}
               ease="back.inOut(2)"
               scrollStart="center bottom+=50%"
               scrollEnd="bottom bottom-=40%"
               stagger={0.03}
-              textClassName="text-center text-2xl font-medium mt-5"
+              textClassName="text-center text-xl font-medium mt-5"
             >
               Hey there! I'm Nazib, your friendly neighborhood full-stack
               wizard! 🧙‍♂️ When I'm not designing sleek interfaces or coding up a
@@ -365,7 +351,7 @@ export default function Home() {
               scrollStart="center bottom+=50%"
               scrollEnd="bottom bottom-=40%"
               stagger={0.03}
-              textClassName="text-center text-xl font-medium mt-5"
+              textClassName="text-center text-xl font-semibold mt-5"
             >
               Tschuss! 👋
             </ScrollFloat>
@@ -418,70 +404,104 @@ export default function Home() {
                 desc: "A counseling guidance service by ITB to support individuals in managing their mental health and well-being.",
                 href: "https://ganecaretriage.com/",
               },
+              {
+                img: "",
+                title: "TUAI",
+                desc: "A counseling guidance service by ITB to support individuals in managing their mental health and well-being.",
+                href: "",
+              },
             ].map((project, index) => (
               <div
                 key={index}
                 className="group relative overflow-hidden rounded-lg shadow-md"
               >
-                <img
-                  src={project.img}
-                  alt={project.title}
-                  className="h-full w-full rounded-lg object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 flex h-full w-full flex-col bg-black/80 p-6 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <p className="text-lg font-bold">{project.title}</p>
-                  <p className="mt-2 text-sm font-semibold">{project.desc}</p>
-                  <div className="absolute bottom-4 right-4 mt-auto">
-                    {project.href ? (
-                      <a
-                        href={project.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block rounded-full border border-white bg-white py-1 px-4 text-sm font-medium text-black transition-colors duration-200 hover:bg-black hover:text-white"
-                      >
-                        Visit
-                      </a>
-                    ) : (
-                      <p className="inline-block cursor-not-allowed rounded-full border border-gray-400 bg-white py-1 px-4 text-sm font-medium text-gray-400">
-                        Visit
+                {project.img ? (
+                  <>
+                    <img
+                      src={project.img}
+                      alt={project.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 flex h-full w-full flex-col bg-black/80 p-6 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                      <p className="text-lg font-bold">{project.title}</p>
+                      <p className="mt-2 text-sm font-semibold">
+                        {project.desc}
                       </p>
-                    )}
-                  </div>
-                </div>
+                      <div className="absolute bottom-4 right-4 mt-auto">
+                        {project.href ? (
+                          <a
+                            href={project.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-block rounded-full border border-white bg-white py-1 px-4 text-sm font-medium text-black transition-colors duration-200 hover:bg-black hover:text-white"
+                          >
+                            Visit
+                          </a>
+                        ) : (
+                          <p className="inline-block cursor-not-allowed rounded-full border border-gray-400 bg-white py-1 px-4 text-sm font-medium text-gray-400">
+                            Visit
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <img
+                      src="https://i.ytimg.com/vi/jfKfPfyJRdk/maxresdefault_live.jpg"
+                      alt="LoFi"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 flex justify-center items-center h-full w-full flex-col bg-black/50 p-6 text-white transition-opacity duration-300">
+                      <p className="text-lg font-bold">
+                        PROJECT WILL BE ADDED SOON..
+                      </p>
+                    </div>
+                  </>
+                )}
               </div>
             ))}
           </div>
         </section>
 
         {/* Services/FAQ Section */}
-        <section className="bg-gray-200 py-16 md:py-20">
+        <section className="bg-neutral-900 py-16 md:py-20">
           <div className="mx-auto w-4/5 lg:w-3/5">
-            <h2 className="text-center text-3xl font-bold text-gray-800 md:text-left">
+            <h2 className="text-center text-3xl font-bold text-gray-200 md:text-center">
               What I can do for you?
             </h2>
             <div className="mt-12 flex flex-col justify-between gap-8 md:flex-row">
-              <div className="md:w-[30%]">
-                <p className="text-lg font-semibold">For business</p>
-                <p className="mt-5 text-xs font-semibold text-gray-600">
+              <SpotlightCard
+                className="custom-spotlight-card md:w-[30%] text-white"
+                spotlightColor="rgba(0, 229, 255, 0.2)"
+              >
+                <p className="text-lg font-bold">For business</p>
+                <p className="mt-5 text-md font-semibold text-gray-500 hover:text-gray-400 transition-all">
                   I design interfaces that are friendly and valuable for
                   customers and easy to implement for engineers.
                 </p>
-              </div>
-              <div className="md:w-[30%]">
-                <p className="text-lg font-semibold">For startups</p>
-                <p className="mt-5 text-xs font-semibold text-gray-600">
+              </SpotlightCard>
+              <SpotlightCard
+                className="custom-spotlight-card md:w-[30%] text-white"
+                spotlightColor="rgba(0, 229, 255, 0.2)"
+              >
+                <p className="text-lg font-bold">For startups</p>
+                <p className="mt-5 text-md font-semibold text-gray-500 hover:text-gray-400 transition-all">
                   I help to identify the problem and design an MVP. I will
                   advise on tools for building if you don't have an engineer or
                   development resources.
                 </p>
-              </div>
-              <div className="md:w-[30%]">
-                <p className="text-lg font-semibold">For products</p>
-                <p className="mt-5 text-xs font-semibold text-gray-600">
+              </SpotlightCard>
+              <SpotlightCard
+                className="custom-spotlight-card md:w-[30%] text-white"
+                spotlightColor="rgba(0, 229, 255, 0.2)"
+              >
+                <p className="text-lg font-bold">For products</p>
+                <p className="mt-5 text-md font-semibold text-gray-500 hover:text-gray-400 transition-all">
                   I design growth experiments and help your team look at the
                   challenges differently to build a better product.
                 </p>
-              </div>
+              </SpotlightCard>
             </div>
           </div>
         </section>

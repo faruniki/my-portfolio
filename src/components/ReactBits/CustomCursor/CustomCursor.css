@@ -1,0 +1,37 @@
+/* src/components/ReactBits/CustomCursor.css */
+
+/* Hide the default system cursor on the whole page */
+body {
+  cursor: none;
+}
+
+/* Style for our custom cursor dot */
+.custom-cursor {
+  width: 20px;
+  height: 20px;
+  border: 2px solid black;
+  border-radius: 50%;
+  position: fixed; /* Use fixed positioning to follow viewport */
+  transform: translate(-50%, -50%); /* Center the cursor on the mouse pointer */
+  pointer-events: none; /* Allows clicks to pass through the cursor element */
+  z-index: 9999; /* Ensure it's on top of everything */
+  transition: width 0.2s ease-in-out, height 0.2s ease-in-out,
+    background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  mix-blend-mode: difference; /* Cool effect that inverts colors */
+  background-color: white;
+}
+
+/* Style for when the cursor is hovering over an interactive element */
+.custom-cursor.pointer {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border-color: black;
+}
+
+/* Optional: Hide the custom cursor on smaller screens if you prefer */
+@media (max-width: 768px) {
+  .custom-cursor {
+    display: none;
+  }
+}
