@@ -1,7 +1,5 @@
-// src/components/ReactBits/CustomCursor.js
-
 import React, { useState, useEffect } from "react";
-import "./CustomCursor.css"; // We will create this CSS file next
+import "./CustomCursor.css";
 
 const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -9,25 +7,11 @@ const CustomCursor = () => {
   const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
-    // Check for touch device on component mount
-    const onTouch = () => {
-      setIsTouchDevice(true);
-      // Remove event listeners if touch is detected
-      window.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseover", onMouseOver);
-    };
-
-    // Check if the primary input mechanism is coarse (like a finger)
-    if (window.matchMedia("(pointer: coarse)").matches) {
-      onTouch();
-    }
-
     const onMouseMove = (e) => {
       setPosition({ x: e.clientX, y: e.clientY });
     };
 
     const onMouseOver = (e) => {
-      // Check if the hovered element or its parent is a link or button
       if (e.target.closest("a, button, [role='button'], .cursor-pointer")) {
         setIsPointer(true);
       } else {
@@ -35,18 +19,25 @@ const CustomCursor = () => {
       }
     };
 
+    const onTouch = () => {
+      setIsTouchDevice(true);
+      window.removeEventListener("mousemove", onMouseMove);
+      document.removeEventListener("mouseover", onMouseOver);
+    };
+
+    if (window.matchMedia("(pointer: coarse)").matches) {
+      onTouch();
+    }
+
     window.addEventListener("mousemove", onMouseMove);
     document.addEventListener("mouseover", onMouseOver);
 
-    // Cleanup function to remove event listeners
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseover", onMouseOver);
-      window.removeEventListener("touchstart", onTouch);
     };
   }, []);
 
-  // Don't render the cursor on touch devices
   if (isTouchDevice) {
     return null;
   }

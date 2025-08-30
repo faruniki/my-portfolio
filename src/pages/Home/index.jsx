@@ -151,10 +151,7 @@ export default function Home() {
           navVisible ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        <div
-          className="text-lg font-bold"
-          onClick={() => scrollToRef(null)}
-        >
+        <div className="text-lg font-bold" onClick={() => scrollToRef(null)}>
           <p>Nazib Akbar</p>
         </div>
         <div
@@ -230,9 +227,9 @@ export default function Home() {
               animateBy="words"
               direction="top"
               onAnimationComplete={handleAnimationComplete}
-              className="text-3xl font-bold lg:text-5xl pb-2"
+              className="text-3xl font-bold lg:text-5xl pb-2 justify-center lg:justify-start"
             />
-            <div className="mt-4 h-[80px]">
+            <div className="mt-4 md:h-[80px]">
               <DecryptedText
                 text="Hello, I'm Nazib Akbar. A guy who interested in Web Development
               and UI/UX Design. I'm currently live in Bogor, Indonesia. 🌍"
@@ -321,7 +318,7 @@ export default function Home() {
               scrollStart="center bottom+=50%"
               scrollEnd="bottom bottom-=40%"
               stagger={0.03}
-              textClassName="text-center text-4xl font-bold"
+              textClassName="text-center text-2xl md:text-4xl font-bold"
             >
               About me 🫠
             </ScrollFloat>
@@ -367,7 +364,7 @@ export default function Home() {
               scrollStart="center bottom+=50%"
               scrollEnd="bottom bottom-=40%"
               stagger={0.03}
-              textClassName="text-center text-4xl font-bold"
+              textClassName="text-center text-2xl md:text-4xl font-bold"
             >
               Projects that I've done!
             </ScrollFloat>
