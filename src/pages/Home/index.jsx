@@ -353,6 +353,7 @@ export default function Home() {
               Tschuss! 👋
             </ScrollFloat>
           </p>
+          <iframe data-testid="embed-iframe" className="rounded-md mt-10" src="https://open.spotify.com/embed/track/6a27ujWv21H3qCkFGFj58L?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </section>
 
         {/* Projects Section */}
