@@ -5,7 +5,6 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import {
   SiReact,
-  SiJavascript,
   SiTypescript,
   SiTailwindcss,
   SiExpress,
