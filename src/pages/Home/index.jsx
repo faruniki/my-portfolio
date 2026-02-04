@@ -17,33 +17,21 @@ import { FaNodeJs, FaPython } from "react-icons/fa";
 
 // Local Assets
 import Profile from "../../documents/profile.jpeg";
-import Projects1 from "../../documents/projects/project-1.jpg";
-import Pesantren from "../../documents/projects/pesantren.jpg";
-import Sivina from "../../documents/projects/sivina.jpg";
-import Bapangnas from "../../documents/projects/bapangnas.jpg";
 
-// import Jatiluwih from "../../documents/images/jatiluwih.jpg";
-// import SouthJakarta from "../../documents/images/south-jakarta.jpg";
-// import Bali from "../../documents/images/bali.jpg";
-// import NusaTenggara from "../../documents/images/nusa-tenggara.jpg";
-// import CentralJava from "../../documents/images/central-java.jpg";
+// Client Logos
+import BapangnasIcon from "../../documents/clients/bapangnas.png";
+import KomdigiIcon from "../../documents/clients/komdigi.png";
+import IndoreIcon from "../../documents/clients/indore.png";
+import EnesisIcon from "../../documents/clients/enesis.png";
+import ItbIcon from "../../documents/clients/itb.png";
+import AgmariIcon from "../../documents/clients/agmari.png";
+import ScadsIcon from "../../documents/clients/scads.png";
+import StarcoreIcon from "../../documents/clients/starcore.png";
 
-import Triage from "../../documents/projects/triage.png";
 import LogoLoop from "../../components/ReactBits/LogoLoop";
-import ShinyText from "../../components/ReactBits/ShinyText";
-import SplitText from "../../components/ReactBits/SplitText";
 import BlurText from "../../components/ReactBits/BlurText";
-import DecryptedText from "../../components/ReactBits/DecryptedText";
-import VariableProximity from "../../components/ReactBits/VariableProximity";
-import ScrollFloat from "../../components/ReactBits/ScrollFloat";
-import ScrollVelocity from "../../components/ReactBits/ScrollVelocity";
 import TiltedCard from "../../components/ReactBits/TiltedCard";
-import ProfileCard from "../../components/ReactBits/ProfileCard";
-import CircularGallery from "../../components/ReactBits/CircularGallery";
-import ScrollReveal from "../../components/ReactBits/ScrollReveal";
-import BlobCursor from "../../components/ReactBits/BlobCursor";
 import SpotlightCard from "../../components/ReactBits/SpotlightCard";
-import Particles from "../../components/ReactBits/Particles";
 import CustomCursor from "../../components/ReactBits/CustomCursor";
 
 export default function Home() {
@@ -51,9 +39,8 @@ export default function Home() {
   const [navVisible, setNavVisible] = useState(true);
 
   const aboutRef = useRef(null);
-  const projectsRef = useRef(null);
+  const clientsRef = useRef(null);
   const contactRef = useRef(null);
-  const containerRef = useRef(null);
 
   const lastScrollTop = useRef(0);
 
@@ -89,6 +76,17 @@ export default function Home() {
     console.log("All letters have animated!");
   };
 
+  const clients = [
+    { src: BapangnasIcon, alt: "Bapangnas" },
+    { src: KomdigiIcon, alt: "Komdigi" },
+    { src: IndoreIcon, alt: "Indore" },
+    { src: EnesisIcon, alt: "Enesis" },
+    { src: ItbIcon, alt: "ITB" },
+    { src: AgmariIcon, alt: "Agmari" },
+    { src: ScadsIcon, alt: "SCADS" },
+    { src: StarcoreIcon, alt: "Starcore" },
+  ];
+
   const techLogos = [
     { node: <SiReact />, title: "React", href: "https://react.dev" },
     {
@@ -120,29 +118,6 @@ export default function Home() {
       href: "https://fastapi.tiangolo.com",
     },
   ];
-
-  // const galleryItems = [
-  //   {
-  //     image: Jatiluwih,
-  //     text: "Jatiluwih",
-  //   },
-  //   {
-  //     image: Bali,
-  //     text: "Bali",
-  //   },
-  //   {
-  //     image: SouthJakarta,
-  //     text: "South Jakarta",
-  //   },
-  //   {
-  //     image: NusaTenggara,
-  //     text: "Nusa Tenggara",
-  //   },
-  //   {
-  //     image: CentralJava,
-  //     text: "Central Java",
-  //   },
-  // ];
 
   return (
     <div className="font-montserrat relative w-full">
@@ -180,9 +155,9 @@ export default function Home() {
             </li>
             <li
               className="relative list-none text-sm font-semibold after:absolute after:bottom-[-5px] after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
-              onClick={() => scrollToRef(projectsRef)}
+              onClick={() => scrollToRef(clientsRef)}
             >
-              Projects
+              Clients
             </li>
             <li
               className="relative list-none text-sm font-semibold after:absolute after:bottom-[-5px] after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
@@ -190,36 +165,29 @@ export default function Home() {
             >
               Contact
             </li>
+            <a
+              href="/resume.pdf"
+              download="Najib Fahruna Akbar - Resume.pdf"
+              className="
+                mt-2 md:mt-0
+                rounded-full border border-black
+                px-5 py-2
+                text-sm font-semibold
+                text-black
+                transition-all duration-300
+                hover:bg-black hover:text-white
+              "
+            >
+              Resume
+            </a>
           </ul>
         </div>
       </nav>
 
       <CustomCursor />
 
-      <div
-        style={{
-          position: "absolute",
-          top: -500,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          zIndex: -1,
-        }}
-      >
-        <Particles
-          particleColors={["#e3e3e3ff"]}
-          particleCount={100}
-          particleSpread={2}
-          speed={0.3}
-          particleBaseSize={100}
-          moveParticlesOnHover={true}
-          alphaParticles={false}
-          disableRotation={false}
-        />
-      </div>
-
       <main className="pt-24 z-1">
-        <section className="mx-auto flex flex-col-reverse items-center gap-y-8 px-6 md:mt-40 md:w-4/5 md:flex-row md:justify-between lg:w-3/5">
+        <section className="mx-auto flex flex-col-reverse items-center gap-y-8 px-6 md:mt-32 md:w-4/5 md:flex-row md:justify-between lg:w-3/5">
           <div className="w-full text-center md:w-3/5 md:text-left">
             <BlurText
               text="Junior Web Developer & UI/UX Designer 💫"
@@ -230,14 +198,13 @@ export default function Home() {
               className="text-3xl font-bold lg:text-5xl pb-2 justify-center lg:justify-start"
             />
             <div className="mt-4 md:h-[80px]">
-              <DecryptedText
+              <BlurText
                 text="Hello, I'm Nazib Akbar. A guy who interested in Web Development
               and UI/UX Design. I'm currently live in Bogor, Indonesia. 🌍"
-                speed={10}
-                animateOn="view"
-                revealDirection="left"
-                sequential="true"
-                useOriginalCharsOnly="true"
+                delay={30}
+                animateBy="words"
+                direction="top"
+                onAnimationComplete={handleAnimationComplete}
                 className="text-xl"
               />
             </div>
@@ -296,169 +263,98 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-40">
-          <ScrollVelocity
-            texts={[
-              "React Tailwind JavaScript Express",
-              "Python FastAPI MongoDB",
-            ]}
-            velocity={50}
-            className="custom-scroll-text py-2 text-gray-200"
-          />
-        </section>
-
         <section
           ref={aboutRef}
-          className="mx-auto mt-30 w-4/5 text-center lg:w-3/5"
+          className="mx-auto mt-64 w-4/5 text-center lg:w-3/5"
         >
-          <h2 className="mb-10 text-center text-2xl font-bold">
-            <ScrollFloat
-              animationDuration={2.5}
-              ease="back.inOut(2)"
-              scrollStart="center bottom+=50%"
-              scrollEnd="bottom bottom-=40%"
-              stagger={0.03}
-              textClassName="text-center text-2xl md:text-4xl font-bold"
-            >
-              About me 🫠
-            </ScrollFloat>
-          </h2>
-          <p className="mt-5 text-2xl font-bold">
-            <ScrollFloat
-              animationDuration={2.5}
-              ease="back.inOut(2)"
-              scrollStart="center bottom+=50%"
-              scrollEnd="bottom bottom-=40%"
-              stagger={0.03}
-              textClassName="text-center text-xl font-medium mt-5"
-            >
-              Hey there! I'm Nazib, your friendly neighborhood full-stack
-              wizard! 🧙‍♂️ When I'm not designing sleek interfaces or coding up a
-              storm, you can find me lost in the world of full-stack
-              development. I've got a serious passion for crafting pixel-perfect
-              designs or system and bringing them to life with some magical
-              code. Let's make the web a more beautiful and functional place,
-              one component at a time! 🚀✨
-            </ScrollFloat>
-          </p>
-          <p className="mt-5 text-2xl font-bold">
-            <ScrollFloat
-              animationDuration={2.5}
-              ease="back.inOut(2)"
-              scrollStart="center bottom+=50%"
-              scrollEnd="bottom bottom-=40%"
-              stagger={0.03}
-              textClassName="text-center text-xl font-semibold mt-5"
-            >
-              Tschuss! 👋
-            </ScrollFloat>
-          </p>
-          <iframe data-testid="embed-iframe" className="rounded-md mt-10" src="https://open.spotify.com/embed/track/6a27ujWv21H3qCkFGFj58L?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <BlurText
+            animateBy="chars"
+            direction="top"
+            onAnimationComplete={handleAnimationComplete}
+            delay={50}
+            className="text-4xl text-center justify-center font-bold mt-5"
+            text={`About me`}
+          />
+          <BlurText
+            animateBy="words"
+            direction="top"
+            onAnimationComplete={handleAnimationComplete}
+            delay={10}
+            className="text-lg text-center justify-center font-light mt-5"
+            text={`Hey there! I'm Nazib, your friendly neighborhood full-stack wizard! 🧙‍♂️ When I'm not designing sleek interfaces or coding up a storm, you can find me lost in the world of full-stack development. I've got a serious passion for crafting pixel-perfect designs or system and bringing them to life with some magical code. Let's make the web a more beautiful and functional place, one component at a time! 🚀✨`}
+          />
+          <BlurText
+            animateBy="words"
+            direction="top"
+            onAnimationComplete={handleAnimationComplete}
+            delay={10}
+            className="text-xl text-center justify-center font-bold mt-20"
+            text={`Tschuss! 👋`}
+          />
+          {/* <iframe data-testid="embed-iframe" className="rounded-md mt-10" src="https://open.spotify.com/embed/track/6a27ujWv21H3qCkFGFj58L?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> */}
         </section>
 
-        {/* Projects Section */}
-        <section ref={projectsRef} className="mx-auto my-40 w-4/5 lg:w-3/5">
-          <h2 className="mb-10 text-center text-2xl font-bold">
-            <ScrollFloat
-              animationDuration={2.5}
-              ease="back.inOut(2)"
-              scrollStart="center bottom+=50%"
-              scrollEnd="bottom bottom-=40%"
-              stagger={0.03}
-              textClassName="text-center text-2xl md:text-4xl font-bold"
-            >
-              Projects that I've done!
-            </ScrollFloat>
-          </h2>
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-            {[
-              {
-                img: Projects1,
-                title: "Asosiasi Guru Marketing Indonesia",
-                desc: "Agmari is an organization in the field of education aimed at promoting progress and professionalism for Marketing teachers.",
-                href: "https://www.agmari.org",
-              },
-              {
-                img: Pesantren,
-                title: "Tabungan Siswa Pesantren Quran Pamijahan",
-                desc: "A student savings program tailored for students of the Pamijahan Quranic Boarding School.",
-                href: null,
-              },
-              {
-                img: Sivina,
-                title: "Sivina Retail",
-                desc: "Sivina is a retail audit and observation survey app that helps businesses collect real-time data on product availability.",
-                href: null,
-              },
-              {
-                img: Bapangnas,
-                title: "Badan Pangan Nasional",
-                desc: "Badan Pangan Nasional (Bapangnas) is Indonesia's National Food Authority that oversees food warehousing and manages storage facilities.",
-                href: null,
-              },
-              {
-                img: Triage,
-                title: "Gane Care Triage (ITB)",
-                desc: "A counseling guidance service by ITB to support individuals in managing their mental health and well-being.",
-                href: "https://ganecaretriage.com/",
-              },
-              {
-                img: "",
-                title: "TUAI",
-                desc: "A counseling guidance service by ITB to support individuals in managing their mental health and well-being.",
-                href: "",
-              },
-            ].map((project, index) => (
-              <div
-                key={index}
-                className="group relative overflow-hidden rounded-lg shadow-md"
-              >
-                {project.img ? (
-                  <>
-                    <img
-                      src={project.img}
-                      alt={project.title}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 flex h-full w-full flex-col bg-black/80 p-6 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                      <p className="text-lg font-bold">{project.title}</p>
-                      <p className="mt-2 text-sm font-semibold">
-                        {project.desc}
-                      </p>
-                      <div className="absolute bottom-4 right-4 mt-auto">
-                        {project.href ? (
-                          <a
-                            href={project.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-block rounded-full border border-white bg-white py-1 px-4 text-sm font-medium text-black transition-colors duration-200 hover:bg-black hover:text-white"
-                          >
-                            Visit
-                          </a>
-                        ) : (
-                          <p className="inline-block cursor-not-allowed rounded-full border border-gray-400 bg-white py-1 px-4 text-sm font-medium text-gray-400">
-                            Visit
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <img
-                      src="https://i.ytimg.com/vi/jfKfPfyJRdk/maxresdefault_live.jpg"
-                      alt="LoFi"
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 flex justify-center items-center h-full w-full flex-col bg-black/50 p-6 text-white transition-opacity duration-300">
-                      <p className="text-lg font-bold">
-                        PROJECT WILL BE ADDED SOON..
-                      </p>
-                    </div>
-                  </>
-                )}
-              </div>
-            ))}
+
+        {/* Clients Section */}
+        <section ref={clientsRef} className="mx-auto my-64 w-4/5 lg:w-3/5">
+          <BlurText
+            animateBy="chars"
+            direction="top"
+            onAnimationComplete={handleAnimationComplete}
+            delay={30}
+            className="text-4xl mb-10 text-center justify-center font-bold mt-5"
+            text={`Whom i've handled with!`}
+          />
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-5 items-center justify-items-center mt-12">
+            {clients.map((client, index) => {
+              const total = clients.length;
+              const remainder = total % 5 || 5;
+              const startOfLastRow = total - remainder;
+              const isLastRow = index >= startOfLastRow;
+
+              // column span per item for last row
+              const colSpanMap = {
+                1: "lg:col-span-5",
+                2: "lg:col-span-2",
+                3: "lg:col-span-1",
+                4: "lg:col-span-1",
+              };
+
+              // extra centering tweaks
+              const extraCenterMap = {
+                2: "lg:col-start-2",
+                3: "lg:col-start-2",
+                4: "lg:col-start-1",
+              };
+
+              const colSpan =
+                isLastRow && remainder < 5 ? colSpanMap[remainder] : "";
+
+              const colStart =
+                isLastRow && remainder < 5 && index === startOfLastRow
+                  ? extraCenterMap[remainder]
+                  : "";
+
+              return (
+                <div
+                  key={index}
+                  className={`
+        w-32 h-32 flex items-center justify-center
+        grayscale hover:grayscale-0
+        transition-all duration-300
+        opacity-50 hover:opacity-100
+        ${colSpan}
+        ${colStart}
+      `}
+                >
+                  <img
+                    src={client.src}
+                    alt={client.alt}
+                    className="max-w-full max-h-full object-contain"
+                  />
+                </div>
+              );
+            })}
           </div>
         </section>
 
