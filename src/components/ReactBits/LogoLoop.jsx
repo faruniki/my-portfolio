@@ -324,7 +324,6 @@ export const LogoLoop = memo(
             scaleOnHover && "overflow-visible group/item"
           )}
           key={key}
-          role="listitem"
         >
           {inner}
         </li>
@@ -339,7 +338,6 @@ export const LogoLoop = memo(
           <ul
             className="flex items-center"
             key={`copy-${copyIndex}`}
-            role="list"
             aria-hidden={copyIndex > 0}
             ref={copyIndex === 0 ? seqRef : undefined}
           >
