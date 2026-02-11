@@ -412,7 +412,7 @@ export default function Home() {
               najibfahrunaakbar@gmail.com
             </p>
             <p className="my-5 text-base font-semibold text-white">
-              +62 82 125895 244
+              +62 813 953 6762
             </p>
             <div className="mt-12 flex justify-center gap-x-6">
               <a
