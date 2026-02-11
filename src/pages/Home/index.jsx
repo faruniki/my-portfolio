@@ -165,7 +165,7 @@ export default function Home() {
               Contact
             </li>
             <a
-              href="/resume.pdf"
+              href="/Najib Fahruna Akbar - Resume.pdf"
               download="Najib Fahruna Akbar - Resume.pdf"
               className="
                 mt-2 md:mt-0
@@ -302,7 +302,7 @@ export default function Home() {
             onAnimationComplete={handleAnimationComplete}
             delay={30}
             className="text-4xl mb-10 text-center justify-center font-bold mt-5"
-            text={`Whom i've handled with!`}
+            text={`Clients I’ve worked with`}
           />
           <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-5 items-center justify-items-center mt-12">
             {clients.map((client, index) => {
