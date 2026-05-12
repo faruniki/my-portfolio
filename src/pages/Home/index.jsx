@@ -179,6 +179,22 @@ export default function Home() {
             >
               Resume
             </a>
+            <div className="w-px rounded-full h-6 bg-gray-300 hidden md:block">
+            </div>
+            <a
+              href="/blog"
+              className="
+                mt-2 md:mt-0
+                rounded-full border border-black
+                px-5 py-2
+                text-sm font-semibold
+                text-black
+                transition-all duration-300
+                hover:bg-black hover:text-white
+              "
+            >
+              Blog
+            </a>
           </ul>
         </div>
       </nav>
