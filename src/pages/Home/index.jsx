@@ -36,6 +36,7 @@ import CustomCursor from "../../components/ReactBits/CustomCursor";
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [navVisible, setNavVisible] = useState(true);
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
   const aboutRef = useRef(null);
   const clientsRef = useRef(null);
@@ -164,9 +165,8 @@ export default function Home() {
             >
               Contact
             </li>
-            <a
-              href="/Najib Fahruna Akbar - Resume.pdf"
-              download="Najib Fahruna Akbar - Resume.pdf"
+            <button
+              onClick={() => setIsResumeModalOpen(true)}
               className="
                 mt-2 md:mt-0
                 rounded-full border border-black
@@ -178,7 +178,7 @@ export default function Home() {
               "
             >
               Resume
-            </a>
+            </button>
             <div className="w-px rounded-full h-6 bg-gray-300 hidden md:block">
             </div>
             <a
@@ -451,6 +451,48 @@ export default function Home() {
           </div>
         </footer>
       </main>
+
+      {/* Resume Selection Modal */}
+      {isResumeModalOpen && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-md px-6"
+          onClick={() => setIsResumeModalOpen(false)}
+        >
+          <div
+            className="w-full max-w-sm rounded-3xl bg-white p-8 shadow-2xl transition-all"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3 className="text-2xl font-bold text-black">Download Resume</h3>
+            <p className="mt-2 text-sm text-gray-500">
+              Choose the version that best suits your requirements.
+            </p>
+            <div className="mt-8 flex flex-col gap-3">
+              <a
+                href="/Najib Fahruna Akbar - Resume ATS.pdf"
+                download="Najib Fahruna Akbar - Resume ATS.pdf"
+                className="flex items-center justify-center rounded-xl border-2 border-black py-3.5 text-sm font-bold text-black transition-all hover:bg-black hover:text-white"
+                onClick={() => setIsResumeModalOpen(false)}
+              >
+                ATS Version (Standard)
+              </a>
+              <a
+                href="/Najib Fahruna Akbar - Resume Creative.pdf"
+                download="Najib Fahruna Akbar - Resume Creative.pdf"
+                className="flex items-center justify-center rounded-xl border-2 border-black py-3.5 text-sm font-bold text-black transition-all hover:bg-black hover:text-white"
+                onClick={() => setIsResumeModalOpen(false)}
+              >
+                Creative Version (Visual)
+              </a>
+              <button
+                onClick={() => setIsResumeModalOpen(false)}
+                className="mt-2 text-sm font-semibold text-gray-400 hover:text-black transition-colors"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
