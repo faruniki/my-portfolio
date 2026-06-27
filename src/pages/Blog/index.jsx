@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState } from "react";
 
 // Icons
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
