@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState } from "react";
 
 // Icons
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -7,6 +7,8 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import BlurText from "../../components/ReactBits/BlurText";
 import SpotlightCard from "../../components/ReactBits/SpotlightCard";
 import CustomCursor from "../../components/ReactBits/CustomCursor";
+import Navbar from "../../components/navbar";
+import ResumeModal from "../../components/ResumeModal";
 
 // Static blog posts data
 const blogPosts = [
@@ -75,26 +77,8 @@ const blogPosts = [
 const CATEGORIES = ["All", "Development", "Design", "Backend", "Database", "Career"];
 
 export default function Blog() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [navVisible, setNavVisible] = useState(true);
   const [activeCategory, setActiveCategory] = useState("All");
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
-  const lastScrollTop = useRef(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScroll =
-        window.pageYOffset || document.documentElement.scrollTop;
-      if (currentScroll > lastScrollTop.current && currentScroll > 100) {
-        setNavVisible(false);
-      } else {
-        setNavVisible(true);
-      }
-      lastScrollTop.current = currentScroll <= 0 ? 0 : currentScroll;
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const filteredPosts =
     activeCategory === "All"
@@ -103,53 +87,7 @@ export default function Blog() {
 
   return (
     <div className="font-montserrat relative w-full">
-      {/* Navbar */}
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 flex w-full items-center justify-between bg-white/80 px-6 py-4 shadow-sm backdrop-blur-sm transition-transform duration-300 ${
-          navVisible ? "translate-y-0" : "-translate-y-full"
-        }`}
-      >
-        <div className="text-lg font-bold">
-          <a href="/">Nazib Akbar</a>
-        </div>
-        <div
-          className="text-2xl md:hidden"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          ☰
-        </div>
-        <div
-          className={`${
-            menuOpen ? "flex" : "hidden"
-          } absolute top-full left-0 w-full flex-col items-center gap-y-6 bg-white py-4 shadow-md md:relative md:top-auto md:flex md:w-auto md:flex-row md:gap-x-8 md:bg-transparent md:py-0 md:shadow-none`}
-        >
-          <ul className="flex flex-col items-center gap-y-6 md:flex-row md:gap-x-8">
-            {["Home", "About", "Clients", "Contact"].map((item) => (
-              <li
-                key={item}
-                className="relative list-none text-sm font-semibold after:absolute after:bottom-[-5px] after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
-              >
-                <a href={item === "Home" ? "/" : `/#${item.toLowerCase()}`}>
-                  {item}
-                </a>
-              </li>
-            ))}
-            <button
-              onClick={() => setIsResumeModalOpen(true)}
-              className="mt-2 md:mt-0 rounded-full border border-black px-5 py-2 text-sm font-semibold text-black transition-all duration-300 hover:bg-black hover:text-white"
-            >
-              Resume
-            </button>
-            <div className="w-px rounded-full h-6 bg-gray-300 hidden md:block" />
-            <a
-              href="/blog"
-              className="mt-2 pointer-events-none md:mt-0 rounded-full border border-black bg-black px-5 py-2 text-sm font-semibold text-white transition-all duration-300"
-            >
-              Blog
-            </a>
-          </ul>
-        </div>
-      </nav>
+      <Navbar theme="light" onResumeClick={() => setIsResumeModalOpen(true)} activePage="blog" />
 
       <CustomCursor />
 
@@ -161,7 +99,7 @@ export default function Blog() {
             direction="top"
             delay={60}
             className="text-5xl font-bold"
-            text="Blog - Under Development"
+            text="Welcome to my blog!"
           />
           <BlurText
             animateBy="words"
@@ -301,47 +239,7 @@ export default function Blog() {
         </footer>
       </main>
 
-      {/* Resume Selection Modal */}
-      {isResumeModalOpen && (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-md px-6"
-          onClick={() => setIsResumeModalOpen(false)}
-        >
-          <div
-            className="w-full max-w-sm rounded-3xl bg-white p-8 shadow-2xl transition-all"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h3 className="text-2xl font-bold text-black">Download Resume</h3>
-            <p className="mt-2 text-sm text-gray-500">
-              Choose the version that best suits your requirements.
-            </p>
-            <div className="mt-8 flex flex-col gap-3">
-              <a
-                href="/Najib Fahruna Akbar - Resume ATS.pdf"
-                download="Najib Fahruna Akbar - Resume ATS.pdf"
-                className="flex items-center justify-center rounded-xl border-2 border-black py-3.5 text-sm font-bold text-black transition-all hover:bg-black hover:text-white"
-                onClick={() => setIsResumeModalOpen(false)}
-              >
-                ATS Version (Standard)
-              </a>
-              <a
-                href="/Najib Fahruna Akbar - Resume Creative.pdf"
-                download="Najib Fahruna Akbar - Resume Creative.pdf"
-                className="flex items-center justify-center rounded-xl border-2 border-black py-3.5 text-sm font-bold text-black transition-all hover:bg-black hover:text-white"
-                onClick={() => setIsResumeModalOpen(false)}
-              >
-                Creative Version (Visual)
-              </a>
-              <button
-                onClick={() => setIsResumeModalOpen(false)}
-                className="mt-2 text-sm font-semibold text-gray-400 hover:text-black transition-colors"
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <ResumeModal isOpen={isResumeModalOpen} onClose={() => setIsResumeModalOpen(false)} />
     </div>
   );
 }

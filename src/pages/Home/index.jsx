@@ -1,8 +1,6 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 
 // Icons
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import GitHubIcon from "@mui/icons-material/GitHub";
 import {
   SiReact,
   SiTypescript,
@@ -11,6 +9,8 @@ import {
   SiMongodb,
   SiFastapi,
 } from "react-icons/si";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import GitHubIcon from "@mui/icons-material/GitHub";
 import { IoLogoJavascript } from "react-icons/io";
 import { FaNodeJs, FaPython } from "react-icons/fa";
 
@@ -32,45 +32,21 @@ import BlurText from "../../components/ReactBits/BlurText";
 import TiltedCard from "../../components/ReactBits/TiltedCard";
 import SpotlightCard from "../../components/ReactBits/SpotlightCard";
 import CustomCursor from "../../components/ReactBits/CustomCursor";
+import Navbar from "../../components/navbar";
+import ResumeModal from "../../components/ResumeModal";
 
 export default function Home() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [navVisible, setNavVisible] = useState(true);
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
   const aboutRef = useRef(null);
   const clientsRef = useRef(null);
   const contactRef = useRef(null);
 
-  const lastScrollTop = useRef(0);
-
-  // Improved scroll handling with useEffect for better performance and cleanup
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScroll =
-        window.pageYOffset || document.documentElement.scrollTop;
-      // Hide navbar when scrolling down, show when scrolling up
-      if (currentScroll > lastScrollTop.current && currentScroll > 100) {
-        setNavVisible(false);
-      } else {
-        setNavVisible(true);
-      }
-      lastScrollTop.current = currentScroll <= 0 ? 0 : currentScroll;
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    // Cleanup function to remove the event listener
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToRef = (ref) => {
-    if (ref && ref.current) {
-      ref.current.scrollIntoView({ behavior: "smooth" });
-    } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-    setMenuOpen(false); // Close mobile menu on navigation
-  };
+  // const scrollToRef = (ref) => {
+  //   if (ref && ref.current) {
+  //     ref.current.scrollIntoView({ behavior: "smooth" });
+  //   }
+  // };
 
   const handleAnimationComplete = () => {
     console.log("All letters have animated!");
@@ -121,83 +97,11 @@ export default function Home() {
 
   return (
     <div className="font-montserrat relative w-full">
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 flex w-full items-center justify-between bg-white/80 px-6 py-4 shadow-sm backdrop-blur-sm transition-transform duration-300 ${
-          navVisible ? "translate-y-0" : "-translate-y-full"
-        }`}
-      >
-        <div className="text-lg font-bold" onClick={() => scrollToRef(null)}>
-          <p>Nazib Akbar</p>
-        </div>
-        <div
-          className="text-2xl md:hidden"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          ☰
-        </div>
-        <div
-          className={`${
-            menuOpen ? "flex" : "hidden"
-          } absolute top-full left-0 w-full flex-col items-center gap-y-6 bg-white py-4 shadow-md md:relative md:top-auto md:flex md:w-auto md:flex-row md:gap-x-8 md:bg-transparent md:py-0 md:shadow-none`}
-        >
-          <ul className="flex flex-col items-center gap-y-6 md:flex-row md:gap-x-8">
-            <li
-              className="relative list-none text-sm font-semibold after:absolute after:bottom-[-5px] after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
-              onClick={() => scrollToRef(null)}
-            >
-              Home
-            </li>
-            <li
-              className="relative list-none text-sm font-semibold after:absolute after:bottom-[-5px] after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
-              onClick={() => scrollToRef(aboutRef)}
-            >
-              About
-            </li>
-            <li
-              className="relative list-none text-sm font-semibold after:absolute after:bottom-[-5px] after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
-              onClick={() => scrollToRef(clientsRef)}
-            >
-              Clients
-            </li>
-            <li
-              className="relative list-none text-sm font-semibold after:absolute after:bottom-[-5px] after:left-0 after:h-0.5 after:w-0 after:bg-black after:transition-all after:duration-300 hover:after:w-full"
-              onClick={() => scrollToRef(contactRef)}
-            >
-              Contact
-            </li>
-            <button
-              onClick={() => setIsResumeModalOpen(true)}
-              className="
-                mt-2 md:mt-0
-                rounded-full border border-black
-                px-5 py-2
-                text-sm font-semibold
-                text-black
-                transition-all duration-300
-                hover:bg-black hover:text-white
-              "
-            >
-              Resume
-            </button>
-            <div className="w-px rounded-full h-6 bg-gray-300 hidden md:block">
-            </div>
-            <a
-              href="/blog"
-              className="
-                mt-2 md:mt-0
-                rounded-full border border-black
-                px-5 py-2
-                text-sm font-semibold
-                text-black
-                transition-all duration-300
-                hover:bg-black hover:text-white
-              "
-            >
-              Blog
-            </a>
-          </ul>
-        </div>
-      </nav>
+      <Navbar
+        theme="light"
+        onResumeClick={() => setIsResumeModalOpen(true)}
+        activePage="home"
+      />
 
       <CustomCursor />
 
@@ -308,7 +212,6 @@ export default function Home() {
           />
           {/* <iframe data-testid="embed-iframe" className="rounded-md mt-10" src="https://open.spotify.com/embed/track/6a27ujWv21H3qCkFGFj58L?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> */}
         </section>
-
 
         {/* Clients Section */}
         <section ref={clientsRef} className="mx-auto my-64 w-4/5 lg:w-3/5">
@@ -452,47 +355,10 @@ export default function Home() {
         </footer>
       </main>
 
-      {/* Resume Selection Modal */}
-      {isResumeModalOpen && (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-md px-6"
-          onClick={() => setIsResumeModalOpen(false)}
-        >
-          <div
-            className="w-full max-w-sm rounded-3xl bg-white p-8 shadow-2xl transition-all"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h3 className="text-2xl font-bold text-black">Download Resume</h3>
-            <p className="mt-2 text-sm text-gray-500">
-              Choose the version that best suits your requirements.
-            </p>
-            <div className="mt-8 flex flex-col gap-3">
-              <a
-                href="/Najib Fahruna Akbar - Resume ATS.pdf"
-                download="Najib Fahruna Akbar - Resume ATS.pdf"
-                className="flex items-center justify-center rounded-xl border-2 border-black py-3.5 text-sm font-bold text-black transition-all hover:bg-black hover:text-white"
-                onClick={() => setIsResumeModalOpen(false)}
-              >
-                ATS Version (Standard)
-              </a>
-              <a
-                href="/Najib Fahruna Akbar - Resume Creative.pdf"
-                download="Najib Fahruna Akbar - Resume Creative.pdf"
-                className="flex items-center justify-center rounded-xl border-2 border-black py-3.5 text-sm font-bold text-black transition-all hover:bg-black hover:text-white"
-                onClick={() => setIsResumeModalOpen(false)}
-              >
-                Creative Version (Visual)
-              </a>
-              <button
-                onClick={() => setIsResumeModalOpen(false)}
-                className="mt-2 text-sm font-semibold text-gray-400 hover:text-black transition-colors"
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <ResumeModal
+        isOpen={isResumeModalOpen}
+        onClose={() => setIsResumeModalOpen(false)}
+      />
     </div>
   );
 }
