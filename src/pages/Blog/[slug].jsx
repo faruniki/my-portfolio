@@ -8,7 +8,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 import BlurText from "../../components/ReactBits/BlurText";
 import CustomCursor from "../../components/ReactBits/CustomCursor";
-import Navbar from "../../components/Navbar.jsx";
+import Navbar from "../../components/navbar.jsx";
 import ResumeModal from "../../components/ResumeModal";
 
 import { POSTS } from "./posts.js";

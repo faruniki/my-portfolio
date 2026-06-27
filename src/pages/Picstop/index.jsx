@@ -8,7 +8,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 import BlurText from "../../components/ReactBits/BlurText";
 import CustomCursor from "../../components/ReactBits/CustomCursor";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/navbar";
 import ResumeModal from "../../components/ResumeModal";
 
 // --- How to use local images ---

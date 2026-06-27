@@ -7,7 +7,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import BlurText from "../../components/ReactBits/BlurText";
 import SpotlightCard from "../../components/ReactBits/SpotlightCard";
 import CustomCursor from "../../components/ReactBits/CustomCursor";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/navbar";
 import ResumeModal from "../../components/ResumeModal";
 
 // Static blog posts data
